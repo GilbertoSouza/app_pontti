@@ -1,2 +1,1 @@
-# app_pontti
-PWA App
+# app_pwa

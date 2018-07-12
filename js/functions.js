@@ -3,32 +3,28 @@ function login(){
     var password = $('#password').textbox('getValue');
 
     if(login == "" && password == ""){
-        setTimeout(function(){ $.mobile.go('#estimate'); }, 500);        
+        setTimeout(function(){ $.mobile.go('#menu'); }, 500);        
     }else{
         $.messager.alert('Login','Usuário/Senha Inválido!');
     }
+}
+
+function menu(){
+    $.mobile.go('#menu');
 }
 
 function registerEstimate(){
     $.mobile.go('#register_estimate');
 }
 
-function editEstimate(){
-    row = $('#dg_Estimate').datagrid('getSelected');
-
-    if(row){
-        $.messager.alert('Ops!','Ok!');
-    }else{
-        $.messager.alert('Ops!','Selecione uma Pre-Venda para Editar!');
-    }    
+function showEstimate(){
+    $.mobile.go('#estimate');
 }
 
-function removeEstimate(){
-    row = $('#dg_Estimate').datagrid('getSelected');
+function showProducts(){
+    $.mobile.go('#products');
+}
 
-    if(row){
-        $.messager.alert('Ops!','Ok!');
-    }else{
-        $.messager.alert('Ops!','Selecione uma Pre-Venda para Remover!');
-    }    
+function showClient(){
+    $.mobile.go('#register_client'); 
 }

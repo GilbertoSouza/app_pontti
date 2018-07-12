@@ -15,12 +15,12 @@
     <script type="text/javascript" src="js/functions.js"></script> 
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link href="/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
-    <link href="/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
-    <link href="/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
-    <link href="/apple_splash_1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
-    <link href="/apple_splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
-    <link href="/apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
+    <link href="img/splash.jpg" sizes="2048x2732" rel="apple-touch-startup-image" />
+    <link href="img/splash.jpg" sizes="1668x2224" rel="apple-touch-startup-image" />
+    <link href="img/splash.jpg" sizes="1536x2048" rel="apple-touch-startup-image" />
+    <link href="img/splash.jpg" sizes="1125x2436" rel="apple-touch-startup-image" />
+    <link href="img/splash.jpg" sizes="1242x2208" rel="apple-touch-startup-image" />
+    <link href="img/splash.jpg" sizes="750x1334" rel="apple-touch-startup-image" />
     <link href="img/splash.jpg" sizes="640x1136" rel="apple-touch-startup-image" />
 
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -36,6 +36,7 @@
     <meta name="theme-color" content="#607d8b">
 
 </head>
+
 <body>
     <div id = "login" class="easyui-navpanel">
         <header>
@@ -44,36 +45,120 @@
             </div>
         </header>
         <div style="margin:20px auto;width:200px;height:100px;border-radius:100px;">
-            <img src="images/logo.png" style="margin:0;width:100%;height:100%;">
+            <img src="img/logo.png" style="margin:0;width:100%;height:100%;">
         </div>
         <div style="padding:0 20px">
             <div style="margin-bottom:10px">
-                <input id = "username" class="easyui-textbox" data-options="prompt:'Usuario',iconCls:'icon-man'" style="width:100%;height:38px">
+                <input id = "username" class="easyui-textbox" 
+                    data-options="prompt:'Usuario',iconCls:'icon-man'" style="width:100%;height:38px">
             </div>
             <div>
                 <input id = "password" class="easyui-passwordbox" data-options="prompt:'Senha'" style="width:100%;height:38px">
             </div>
             <div style="text-align:center;margin-top:30px">
-                <a href="#" class="easyui-linkbutton" style="width:100%;height:40px"><span style="font-size:16px" onclick="login()">Login</span></a>
+                <a href="#" class="easyui-linkbutton" style="width:100%;height:40px">
+                    <span style="font-size:16px" onclick="login()">Login</span>
+                </a>
             </div>            
         </div>
-    </div>   
+    </div>
+
+    <div id = "menu" class="easyui-navpanel">
+        <div class="easyui-navpanel">
+            <header>
+                <div class="m-toolbar">
+                    <div class="m-title"></div>
+                </div>
+            </header>
+
+            <div style="margin:20px auto;width:200px;height:100px;border-radius:100px; margin-top: 150px">
+                <img src="img/logo.png" style="margin:0;width:100%;height:100%;">
+            </div>
+
+            <footer>
+                <div class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+                    <div style="padding:10px">
+                        <div class="panel-header tt-inner" onclick="showProducts();">
+                            <img src='images/products.png'/><br>Produtos
+                        </div>
+                    </div>
+                    <div style="padding:10px">
+                        <div class="panel-header tt-inner" onclick="showClient();">
+                            <img src='images/add.png'/><br>Cadastros
+                        </div>
+                    </div>
+                    <div style="padding:10px">
+                        <div class="panel-header tt-inner" onclick="showEstimate();">
+                            <img src='images/shopcart.png'/><br>Pre-Venda
+                        </div>
+                    </div>
+                    <div style="padding:10px">
+                        <div class="panel-header tt-inner">
+                            <img src='images/os.png'/><br>O.S
+                        </div>                        
+                    </div>
+                </div>
+            </footer>            
+        </div>        
+    </div>
+
+    <div id="products" class="easyui-navpanel">
+        <header>
+            <div class="m-left">
+                <a href="javascript:void(0)" class="easyui-linkbutton m-back" plain="true" outline="true" onclick="$.mobile.back()" style="margin-left: 10px">Voltar</a>
+            </div>
+            <div class="m-toolbar">
+                <div class="m-title">Produtos</div>                
+            </div>
+        </header>       
+        <table id="dgProdutc" class="easyui-datagrid"  url="" data-options="fit:true,border:false" singleSelect="true">
+            <thead>
+                <tr>
+                    <th field="foto_produto" width="25%" >Foto</th>
+                    <th field="descricao_produto" width="66%" >Descrição</th>
+                    <th field="valor_produto" width="15%" >Valor</th>                    
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div id="register_client" class="easyui-navpanel" style="position:relative;padding:20px">
+            <header> 
+                <div class="m-left">
+                    <a href="javascript:void(0)" class="easyui-linkbutton m-back" plain="true" outline="true" onclick="$.mobile.back()" style="margin-left: 10px">Voltar</a>
+                </div>
+                <div class="m-toolbar">
+                    <div class="m-title">Cadastro de Clientes</div>
+                    <div class="m-right">
+                        <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" outline="true" onclick="$('#ff').form('reset')" style="width:60px">Salvar</a>
+                    </div>
+                </div>
+            </header>
+            <form id="form_estimate">
+                <div style="margin-bottom:10px">
+                    <input class="easyui-textbox" label="Nome:" prompt="Nome Completo" style="width:100%">
+                </div>
+                <div style="margin-bottom:10px">
+                    <input class="easyui-numberbox" label="Telefone:" prompt="Telefone" style="width:100%">
+                </div>
+                <div style="margin-bottom:10px">
+                    <input class="easyui-numberbox" label="CPF/CNPJ:" prompt="CPF / CNPJ" style="width:100%">
+                </div>                
+            </form>
+        </div>
     
     <div id = "estimate" class="easyui-navpanel">
         <header>
+            <div class="m-left">
+                <a href="javascript:void(0)" class="easyui-linkbutton m-back" plain="true" outline="true" onclick="$.mobile.back()" style="margin-left: 10px">Voltar</a>
+            </div>
             <div class="m-toolbar">
                 <div class="m-title">Pré-Vendas</div>                
                 <div class="m-right">
-                    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true"></a>
-                    <a href="javascript:void(0)" class="easyui-menubutton" data-options="iconCls:'icon-more',plain:true,hasDownArrow:false,menu:'#mm',menuAlign:'right'"></a>
+                    <a href="javascript:void(0)" class="easyui-menubutton" data-options="iconCls:'icon-add',plain:true,hasDownArrow:false,menuAlign:'right'" onclick="registerEstimate();"></a>
                 </div>
             </div>
-        </header>
-        <div id="mm" class="easyui-menu" style="width:150px;" data-options="itemHeight:30,noline:true">           
-            <div data-options="iconCls:'icon-ok'" onclick="registerEstimate()">Cadastrar</div>
-            <div data-options="iconCls:'icon-edit'" onclick="editEstimate()">Editar</div>
-            <div data-options="iconCls:'icon-remove'" onclick="removeEstimate()">Apagar</div>
-        </div>
+        </header>        
 
         <!-- GRID -->
 
@@ -83,27 +168,17 @@
                     <th data-options="field:'itemid',width:80">ID</th>  
                     <th data-options="field:'cliente',width:100">Cliente</th>  
                     <th data-options="field:'listprice',width:80,align:'right'">Valor</th>  
-                    <th data-options="field:'unitcost',width:80,align:'right'">Status</th>  
+                    <th data-options="field:'status',width:80,align:'right'">Status</th>  
                 </tr>
             </thead>  
-        </table>
-        
-        <script>
-            var data =     [
-                {"cliente":"João Paulo","productname":"Koi","unitcost":10.00,"status":"P","listprice":36.50,"attr1":"Large","itemid":"EST-1"},
-                {"cliente":"Gilberto Souza","productname":"Dalmation","unitcost":12.00,"status":"P","listprice":18.50,"attr1":"Spotted Adult Female","itemid":"EST-10"},
-                {"cliente":"Allan Souza","productname":"Rattlesnake","unitcost":12.00,"status":"P","listprice":38.50,"attr1":"Venomless","itemid":"EST-11"},
-            ];
-            $(function(){
-                $('#dg_Estimate').datagrid({
-                    data: data
-                });
-            });
-        </script>             
+        </table>           
     </div>
 
     <div id="register_estimate" class="easyui-navpanel" style="position:relative;padding:20px">
         <header> 
+            <div class="m-left">
+                <a href="javascript:void(0)" class="easyui-linkbutton m-back" plain="true" outline="true" onclick="$.mobile.back()" style="margin-left: 10px">Voltar</a>
+            </div>
             <div class="m-toolbar">
                 <div class="m-title">Cadastro de Pre-Venda</div>
                 <div class="m-right">
@@ -113,23 +188,62 @@
         </header>
         <form id="form_estimate">
             <div style="margin-bottom:10px">
-                <input class="easyui-textbox" label="Full name:" prompt="Full name" style="width:100%">
+                <input class="easyui-textbox" label="Cliente:" prompt="Cliente" style="width:100%" 
+                    data-options="label: 'Icon:', iconCls: 'icon-search'">
             </div>
             <div style="margin-bottom:10px">
-                <input class="easyui-datebox" label="Birthday:" prompt="Birthday" data-options="editable:false,panelWidth:220,panelHeight:240,iconWidth:30" style="width:100%">
+                <select class="easyui-combobox" name="pagamentos" label="Pagamento:" style="width:100%">
+                    <option value="avista">A Vista</option>
+                    <option value="boleto">Boleto</option>
+                    <option value="cartao">Cartão</option>
+                </select>                    
             </div>
             <div style="margin-bottom:10px">
-                <input class="easyui-passwordbox" label="Password:" prompt="Password" style="width:100%">
-            </div>
-            <div style="margin-bottom:10px">
-                <input class="easyui-numberbox" label="Number:" prompt="Number" style="width:100%">
-            </div>
-            <div style="margin-bottom:10px">
-                <label class="textbox-label">Switch:</label><!--
-                --><input class="easyui-switchbutton">
-            </div>
+                <input class="easyui-textbox" label="Observação:" prompt="Observações..." style="width:100%">
+            </div>            
         </form>
     </div>
 
 </body>    
 </html>
+
+<script>
+        var data =     [
+            {"itemid":"001",
+             "cliente":"João Paulo",             
+             "listprice":"R$: 36,50",
+             "status":"Pendente",
+            },
+
+            {"itemid":"002",
+             "cliente":"Gilberto Souza",             
+             "listprice":"R$: 18,50",
+             "status":"Pendente",
+            },
+
+            {"itemid":"003",
+             "cliente":"Allan Souza",             
+             "listprice":"R$: 38,50",
+             "status":"Pendente",
+             },
+        ];
+
+        $(function(){
+            $('#dg_Estimate').datagrid({
+                data: data
+            });
+        });
+
+        // PRODUTOS
+        var data2 =     [
+            {"foto_produto":"",
+             "descricao_produto":"Resma de Papel 500 folhas",
+             "valor_produto":10.00,
+            },            
+        ];
+        $(function(){
+            $('#dgProdutc').datagrid({
+                data: data2
+            });
+        });
+    </script>          

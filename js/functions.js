@@ -17,6 +17,10 @@ function registerEstimate(){
     $.mobile.go('#register_estimate');
 }
 
+function registerEstimateProducts(){
+    $.mobile.go('#register_estimate_products');
+}
+
 function showEstimate(){
     $.mobile.go('#estimate');
 }
@@ -27,4 +31,8 @@ function showProducts(){
 
 function showClient(){
     $.mobile.go('#register_client'); 
+}
+
+function saveTemp(){
+    alert('Salvar!');
 }

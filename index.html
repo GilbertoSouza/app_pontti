@@ -23,7 +23,7 @@
     <link href="img/splash.jpg" sizes="750x1334" rel="apple-touch-startup-image" />
     <link href="img/splash.jpg" sizes="640x1136" rel="apple-touch-startup-image" />
 
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="apple-mobile-web-app-title" content="GW Mobile">
 
     <link rel="apple-touch-icon" href="img/icons/icon-128x128.png">
@@ -71,7 +71,7 @@
                 </div>
             </header>
 
-            <div style="margin:20px auto;width:200px;height:100px;border-radius:100px; margin-top: 150px">
+            <div style="margin:20px auto;width:200px;height:100px;border-radius:100px; margin-top: 200px">
                 <img src="img/logo.png" style="margin:0;width:100%;height:100%;">
             </div>
 
@@ -104,9 +104,6 @@
 
     <div id="products" class="easyui-navpanel">
         <header>
-            <div class="m-left">
-                <a href="javascript:void(0)" class="easyui-linkbutton m-back" plain="true" outline="true" onclick="$.mobile.back()" style="margin-left: 10px">Voltar</a>
-            </div>
             <div class="m-toolbar">
                 <div class="m-title">Produtos</div>                
             </div>
@@ -120,18 +117,21 @@
                 </tr>
             </thead>
         </table>
+        <footer>
+            <div class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+                <div style="padding:10px">
+                    <div class="panel-header tt-inner" onclick="$.mobile.back()">
+                        <img src='img/back.png'/><br>Voltar
+                    </div>
+                </div>                
+            </div>
+        </footer>            
     </div>
 
     <div id="register_client" class="easyui-navpanel" style="position:relative;padding:20px">
-            <header> 
-                <div class="m-left">
-                    <a href="javascript:void(0)" class="easyui-linkbutton m-back" plain="true" outline="true" onclick="$.mobile.back()" style="margin-left: 10px">Voltar</a>
-                </div>
+            <header>                
                 <div class="m-toolbar">
-                    <div class="m-title">Cadastro de Clientes</div>
-                    <div class="m-right">
-                        <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" outline="true" onclick="$('#ff').form('reset')" style="width:60px">Salvar</a>
-                    </div>
+                    <div class="m-title">Cadastro de Clientes</div>                    
                 </div>
             </header>
             <form id="form_estimate">
@@ -145,20 +145,42 @@
                     <input class="easyui-numberbox" label="CPF/CNPJ:" prompt="CPF / CNPJ" style="width:100%">
                 </div>                
             </form>
+            <footer>
+                <div class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+                    <div style="padding:10px">
+                        <div class="panel-header tt-inner" onclick="$.mobile.back()">
+                            <img src='img/back.png'/><br>Voltar
+                        </div>
+                    </div>         
+                    <div style="padding:10px">
+                        <div class="panel-header tt-inner" onclick="saveTemp()">
+                            <img src='img/save.png'/><br>Salvar
+                        </div>
+                    </div>                
+                </div>
+            </footer>    
         </div>
     
     <div id = "estimate" class="easyui-navpanel">
-        <header>
-            <div class="m-left">
-                <a href="javascript:void(0)" class="easyui-linkbutton m-back" plain="true" outline="true" onclick="$.mobile.back()" style="margin-left: 10px">Voltar</a>
-            </div>
+        <header>            
             <div class="m-toolbar">
                 <div class="m-title">Pré-Vendas</div>                
-                <div class="m-right">
-                    <a href="javascript:void(0)" class="easyui-menubutton" data-options="iconCls:'icon-add',plain:true,hasDownArrow:false,menuAlign:'right'" onclick="registerEstimate();"></a>
-                </div>
             </div>
-        </header>        
+        </header>
+        <footer>
+            <div class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+                <div style="padding:10px">
+                    <div class="panel-header tt-inner" onclick="$.mobile.back()">
+                        <img src='img/back.png'/><br>Voltar
+                    </div>
+                </div>         
+                <div style="padding:10px">
+                    <div class="panel-header tt-inner" onclick="registerEstimate()">
+                        <img src='img/add.png'/><br>Cadastrar
+                    </div>
+                </div>                
+            </div>
+        </footer>           
 
         <!-- GRID -->
 
@@ -175,15 +197,9 @@
     </div>
 
     <div id="register_estimate" class="easyui-navpanel" style="position:relative;padding:20px">
-        <header> 
-            <div class="m-left">
-                <a href="javascript:void(0)" class="easyui-linkbutton m-back" plain="true" outline="true" onclick="$.mobile.back()" style="margin-left: 10px">Voltar</a>
-            </div>
+        <header>            
             <div class="m-toolbar">
-                <div class="m-title">Cadastro de Pre-Venda</div>
-                <div class="m-right">
-                    <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" outline="true" onclick="$('#ff').form('reset')" style="width:60px">Salvar</a>
-                </div>
+                <div class="m-title">Cadastro de Pre-Venda</div>                
             </div>
         </header>
         <form id="form_estimate">
@@ -202,6 +218,68 @@
                 <input class="easyui-textbox" label="Observação:" prompt="Observações..." style="width:100%">
             </div>            
         </form>
+        <footer>
+            <div class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+                <div style="padding:10px">
+                    <div class="panel-header tt-inner" onclick="$.mobile.back()">
+                        <img src='img/back.png'/><br>Voltar
+                    </div>
+                </div>         
+                <div style="padding:10px">
+                    <div class="panel-header tt-inner" onclick="registerEstimateProducts()">
+                        <img src='img/next.png'/><br>Proximo
+                    </div>
+                </div>                
+            </div>
+        </footer>    
+    </div>
+
+    <div id="register_estimate_products" class="easyui-navpanel" style="position:relative;padding:20px">
+        <header>            
+            <div class="m-toolbar">
+                <div class="m-title">Cadastro de Pre-Venda</div>                
+            </div>
+        </header>
+        <form id="form_estimate">
+            <div style="margin-bottom:10px">
+                <input class="easyui-textbox" label="Produto:" prompt="Produto" style="width:100%" 
+                    data-options="label: 'Icon:', iconCls: 'icon-search'">
+            </div>
+            <div style="margin-bottom:10px">
+                <input class="easyui-numberbox" label="Quantidade:" prompt="Quantidade" style="width:100%">
+            </div> 
+            <div style="margin-bottom:10px">
+                <input class="easyui-numberbox" label="Valor:" prompt="Valor" style="width:100%">
+            </div>
+        </form>
+
+        <p><a class="easyui-linkbutton c6" style="width:50%; margin-left: 120px" onclick="">Adicionar</a></p>
+
+        <table id="dg_Estimate_Produtc" class="easyui-datagrid"  url="" data-options="fit:true,border:false" singleSelect="true">
+            <thead>
+                <tr>
+                    <th field="id_produto" width="15%">ID</th>
+                    <th field="descricao_produto" width="61%">Produto</th>
+                    <th field="qtd_produto" width="15%">Qtd</th>
+                    <th field="valor_produto" width="15%">Valor</th>
+                </tr>
+            </thead>
+        </table>
+         
+        <footer>
+            <div class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+                <div style="padding:10px">
+                    <div class="panel-header tt-inner" onclick="$.mobile.back()">
+                        <img src='img/back.png'/><br>Voltar
+                    </div>
+                </div>         
+                <div style="padding:10px">
+                    <div class="panel-header tt-inner" onclick="saveTemp()">
+                        <img src='img/save.png'/><br>Salvar
+                    </div>
+                </div>                
+            </div>
+        </footer>    
     </div>
 
 </body>    

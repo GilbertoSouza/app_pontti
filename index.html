@@ -5,7 +5,7 @@
     <base href="/app_pontti/"> 
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GW Mobile</title>  
-    <link rel="stylesheet" type="text/css" href="themes/material-teal/easyui.css">  
+    <link rel="stylesheet" type="text/css" href="themes/ui-cupertino/easyui.css">  
     <link rel="stylesheet" type="text/css" href="themes/mobile.css">  
     <link rel="stylesheet" type="text/css" href="themes/icon.css">   
     <script type="text/javascript" src="js/jquery.min.js"></script>  
@@ -93,7 +93,7 @@
                         </div>                        
                     </div>
                     <div style="padding:10px">
-                        <div class="panel-header tt-inner" onclick="showClient();">
+                        <div class="panel-header tt-inner" onclick="showReports();">
                             <img src='img/reports.png'/><br>Relatorios
                         </div>
                     </div>
@@ -128,38 +128,20 @@
         </footer>            
     </div>
 
-    <div id="register_client" class="easyui-navpanel" style="position:relative;padding:20px">
-            <header>                
-                <div class="m-toolbar">
-                    <div class="m-title">Cadastro de Clientes</div>                    
-                </div>
-            </header>
-            <form id="form_estimate">
-                <div style="margin-bottom:10px">
-                    <input class="easyui-textbox" label="Nome:" prompt="Nome Completo" style="width:100%">
-                </div>
-                <div style="margin-bottom:10px">
-                    <input class="easyui-numberbox" label="Telefone:" prompt="Telefone" style="width:100%">
-                </div>
-                <div style="margin-bottom:10px">
-                    <input class="easyui-numberbox" label="CPF/CNPJ:" prompt="CPF / CNPJ" style="width:100%">
-                </div>                
-            </form>
-            <footer>
-                <div class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
-                    <div style="padding:10px">
-                        <div class="panel-header tt-inner" onclick="$.mobile.back()">
-                            <img src='img/back.png'/><br>
-                        </div>
-                    </div>         
-                    <div style="padding:10px">
-                        <div class="panel-header tt-inner" onclick="saveTemp()">
-                            <img src='img/save.png'/><br>
-                        </div>
-                    </div>                
-                </div>
-            </footer>    
+    <div id="register_client" class="easyui-dialog" style="padding:20px 6px;width:80%;" data-options="inline:true,modal:true,closed:true,title:'Cadastro de Cliente'">
+        <div style="margin-bottom:10px">
+            <input class="easyui-textbox" label="Nome:" prompt="Nome Completo" style="width:100%">
         </div>
+        <div style="margin-bottom:10px">
+            <input class="easyui-numberbox" label="Telefone:" prompt="Telefone" style="width:100%">
+        </div>
+        <div style="margin-bottom:10px">
+            <input class="easyui-numberbox" label="CPF/CNPJ:" prompt="CPF / CNPJ" style="width:100%">
+        </div> 
+        <div class="dialog-button">
+            <a href="javascript:void(0)" class="easyui-linkbutton" style="width:100%;height:35px" onclick="$('#register_client').dialog('close');">Salvar</a>
+        </div>         
+    </div>
     
     <div id = "estimate" class="easyui-navpanel">
         <header>            
@@ -204,8 +186,9 @@
         </header>
         <form id="form_estimate">
             <div style="margin-bottom:10px">
-                <input class="easyui-textbox" label="Cliente:" prompt="Cliente" style="width:100%" 
+                <input class="easyui-textbox" label="Cliente:" prompt="Cliente" style="width:285px" 
                     data-options="label: 'Icon:', iconCls: 'icon-search'">
+                <a href="javascript:void(0)" class="easyui-linkbutton m-add" data-options="plain:true,outline:true, iconCls:'icon-add'" style="width:30px;height:30px" onclick="$('#register_client').dialog('open').dialog('center')"></a>
             </div>
             <div style="margin-bottom:10px">
                 <select class="easyui-combobox" name="pagamentos" label="Pagamento:" style="width:100%">
@@ -274,12 +257,82 @@
                     </div>
                 </div>         
                 <div style="padding:10px">
-                    <div class="panel-header tt-inner" onclick="saveTemp()">
+                    <div class="panel-header tt-inner" onclick="$('#confirm_save').dialog('open').dialog('center')">
                         <img src='img/save.png'/><br>
                     </div>
                 </div>                
             </div>
         </footer>    
+    </div>
+
+    <div id="confirm_save" class="easyui-dialog" style="padding:20px 6px;width:80%;" data-options="inline:true,modal:true,closed:true,title:'Salvar'">
+        <p><center>Registro salvo com sucesso!</center></p>
+        <div class="dialog-button">
+            <a href="javascript:void(0)" class="easyui-linkbutton" style="width:100%;height:35px" onclick="saveTemp()">OK</a>
+        </div>
+    </div>
+
+    <div id="reports" class="easyui-navpanel">
+        <header>
+            <div class="m-toolbar">
+                <span class="m-title">Relatórios</span>
+            </div>
+        </header>
+        <ul class="m-list">
+            <li><a href="#p1">Relatório 1</a></li>
+        </ul>
+        <ul class="m-list">
+            <li><a href="#p2">Relatório 2</a></li>
+        </ul> 
+        <footer>
+            <div class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+                <div style="padding:10px">
+                    <div class="panel-header tt-inner" onclick="$.mobile.back()">
+                        <img src='img/back.png'/><br>
+                    </div>
+                </div>                
+            </div>
+        </footer>         
+    </div>    
+    <div id="p1" class="easyui-navpanel">
+        <header>
+            <div class="m-toolbar">                
+                <div class="m-title">Relatórios</div>
+            </div>
+        </header>
+        <div style="padding:20px 10px">
+            <p>Lorem ipsum ullamcorper dui metus ac iaculis quisque aliquam, phasellus suspendisse maecenas etiam integer hendrerit et est, arcu non erat habitasse tincidunt nunc eleifend. tristique praesent accumsan nullam pellentesque curabitur lectus porta aptent, consectetur neque netus dictumst diam velit tempus arcu elit, dictumst donec rutrum mi neque felis hac. est vehicula purus sollicitudin primis mi ipsum ultricies, tempor placerat nisi erat et torquent curae orci, ante quis fames pulvinar molestie accumsan. est tempor venenatis eros eleifend placerat scelerisque non eget sollicitudin nisi, commodo sagittis vivamus ligula ullamcorper felis sodales et malesuada aenean, varius class phasellus praesent per eu scelerisque felis ipsum. 
+                Sagittis nisl ligula eget pharetra sed vivamus pellentesque rutrum, dui tincidunt nibh elit tristique ornare enim, senectus suspendisse habitant cras ornare lorem sit. facilisis libero vehicula nec iaculis class sodales purus, etiam lacus inceptos fames consectetur odio vel elementum, lorem consequat varius turpis eleifend duis. elementum at odio bibendum enim in phasellus, purus vel feugiat sit eros, velit vestibulum aliquet mauris consectetur. sapien duis mollis curabitur mi posuere, egestas ipsum sem dolor sociosqu, bibendum eget lectus erat. potenti mauris aptent adipiscing fames at pulvinar congue, posuere cras euismod commodo pulvinar euismod mollis tortor, augue lectus quam odio hac odio. </p>
+        </div>
+        <footer>
+            <div class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+                <div style="padding:10px">
+                    <div class="panel-header tt-inner" onclick="$.mobile.back()">
+                        <img src='img/back.png'/><br>
+                    </div>
+                </div>                
+            </div>
+        </footer>        
+    </div>
+    <div id="p2" class="easyui-navpanel">
+        <header>
+            <div class="m-toolbar">                
+                <div class="m-title">Relatórios</div>
+            </div>
+        </header>
+        <div style="padding:20px 10px">
+            <p>Lorem ipsum eu netus pulvinar ullamcorper habitant tempor, ut augue neque vitae orci sollicitudin, libero odio purus congue dolor risus. curabitur sagittis curabitur iaculis dapibus eget ultricies nam suspendisse rhoncus etiam maecenas purus netus, cras sodales ultricies sociosqu senectus neque donec consequat lobortis volutpat litora. tellus conubia rutrum aenean feugiat sem habitant nec, porttitor per porta rutrum tempus auctor cursus, dolor libero senectus leo proin vitae. curae laoreet mattis fusce lacinia id est justo congue nec est blandit porttitor, euismod urna per bibendum fermentum lorem aliquam tempus aliquam sit. amet pulvinar cras convallis aenean cras in maecenas sociosqu lectus enim, nunc congue rutrum ac elit ligula est mollis.   
+                Sociosqu faucibus nam elementum aliquam hendrerit velit libero pulvinar aenean hendrerit ultrices, sem tempor ipsum libero egestas platea donec adipiscing nulla quam. sem metus bibendum vehicula elementum massa mauris conubia aenean, platea praesent phasellus commodo elementum vehicula nam pharetra, vitae libero semper sed fermentum etiam auctor. porta lacus arcu habitant vestibulum fringilla odio viverra diam convallis, sociosqu mauris ligula tincidunt laoreet quis ut faucibus nullam mauris, euismod ut tellus placerat morbi tincidunt enim diam. ultricies elit nunc aliquam fames blandit fermentum, cubilia sem urna neque a mollis, accumsan a dapibus convallis erat. </p>
+        </div>
+        <footer>
+            <div class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+                <div style="padding:10px">
+                    <div class="panel-header tt-inner" onclick="$.mobile.back()">
+                        <img src='img/back.png'/><br>
+                    </div>
+                </div>                
+            </div>
+        </footer>        
     </div>
 
 </body>    
@@ -316,7 +369,22 @@
         var data2 =     [
             {"foto_produto":"",
              "descricao_produto":"Resma de Papel 500 folhas",
-             "valor_produto":10.00,
+             "valor_produto":'10,00',
+            },
+
+            {"foto_produto":"",
+             "descricao_produto":"Chaveiro de Natal",
+             "valor_produto":'2,00',
+            },
+
+            {"foto_produto":"",
+             "descricao_produto":"Mouse optico sem fio",
+             "valor_produto":'30,00',
+            },
+
+            {"foto_produto":"",
+             "descricao_produto":"Teclado sem fio",
+             "valor_produto":'25,00',
             },            
         ];
         $(function(){

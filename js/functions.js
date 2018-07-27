@@ -34,5 +34,15 @@ function showClient(){
 }
 
 function saveTemp(){
-    alert('Salvar!');
+    $('#confirm_save').dialog('close');  
+    $.mobile.go('#estimate');
+}
+
+function saveClient(){
+    $('#register_client').dialog('close');
+    $('#confirm_save').dialog('open').dialog('center');
+}
+
+function showReports(){
+    $.mobile.go('#reports'); 
 }

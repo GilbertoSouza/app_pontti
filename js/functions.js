@@ -25,6 +25,22 @@ function showEstimate(){
     $.mobile.go('#estimate');
 }
 
+function showService(){
+    $.mobile.go('#service_order');
+}
+
+function registerService(){
+    $.mobile.go('#register_service');
+}
+
+function registerServiceProducts(){
+    $.mobile.go('#register_service_products');
+}
+
+function registerServiceData(){
+    $.mobile.go('#register_service_data');
+}
+
 function showProducts(){
     $.mobile.go('#products');
 }
@@ -38,6 +54,11 @@ function saveTemp(){
     $.mobile.go('#estimate');
 }
 
+function saveServiceTemp(){
+    $('#confirm_save_service').dialog('close');  
+    $.mobile.go('#service_order');
+}
+
 function saveClient(){
     $('#register_client').dialog('close');
     $('#confirm_save').dialog('open').dialog('center');
@@ -45,4 +66,14 @@ function saveClient(){
 
 function showReports(){
     $.mobile.go('#reports'); 
+}
+
+function editService(){
+    var row = $('#dg_service').datagrid('getSelected');
+
+    if(row){
+        alert('Editar O.S');
+    } else {
+        alert('Selecione uma O.S para Editar!');
+    }
 }
